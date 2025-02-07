@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./dashboard.css";
 
 const API_URL = "http://localhost:5109/api/notes"; // Adjust based on your backend URL
 
@@ -31,6 +32,7 @@ function Dashboard() {
       if (response.ok) {
         setNewNoteSummary("");
         setNewNoteDetails("");
+        fetchNotes(); // Refresh the list
       }
     } catch (error) {
       console.error("Error adding note:", error);
@@ -38,6 +40,9 @@ function Dashboard() {
   };
 
   const deleteNote = async (id) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this note?");
+    if (!confirmDelete) return;
+
     try {
       await fetch(`${API_URL}/${id}`, {
         method: "DELETE"
@@ -66,57 +71,73 @@ function Dashboard() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Note Keeper</h1>
-      <button onClick={fetchNotes}>Fetch Notes</button>
-      <button onClick={addNote}>Add Note</button>
-      <div>
+    <div className="dashboard">
+      <div className="title-container">
+        <h1 className="title">Note Keeper</h1>
+      </div>
+
+      {/* Input for New Note */}
+      <div className="input-container">
         <input
+          className="input-title"
           type="text"
-          placeholder="Enter note summary"
+          placeholder="Title"
           value={newNoteSummary}
           onChange={(e) => setNewNoteSummary(e.target.value)}
         />
-        <input
-          type="text"
-          placeholder="Enter note details"
+        <textarea
+          className="input-details"
+          placeholder="Note"
           value={newNoteDetails}
           onChange={(e) => setNewNoteDetails(e.target.value)}
         />
+        <div className="button-container">
+          <button onClick={addNote}>+</button>
+          <button className="btn-fetch" onClick={fetchNotes}>Get Notes</button>
+        </div>
       </div>
-      <ul>
+
+      {/* Display Notes */}
+      <div className="notes-container">
         {notes.map((note) => (
-          <li key={note.noteId}>
+          <div key={note.noteId} className="note-card">
             {editingNote === note.noteId ? (
               <>
+                {/* Edit Mode */}
                 <input
+                  className="edit-title"
                   type="text"
-                  placeholder="Edit summary"
                   value={editingSummary}
                   onChange={(e) => setEditingSummary(e.target.value)}
                 />
-                <input
-                  type="text"
-                  placeholder="Edit details"
+                <textarea
+                  className="edit-details"
                   value={editingDetails}
                   onChange={(e) => setEditingDetails(e.target.value)}
                 />
-                <button onClick={updateNote}>Save</button>
+                <button className="btn-save" onClick={updateNote}>Save</button>
+                <button className="btn-cancel" onClick={() => setEditingNote(null)}>Cancel</button>
               </>
             ) : (
               <>
-                <strong>{note.summary}</strong>: {note.details}
-                <button onClick={() => {
-                  setEditingNote(note.noteId);
-                  setEditingSummary(note.summary);
-                  setEditingDetails(note.details);
-                }}>Edit</button>
-                <button onClick={() => deleteNote(note.noteId)}>Delete</button>
+                {/* View Mode */}
+                <div className="note-title">{note.summary}</div>
+                <div className="note-details">{note.details}</div>
+                <div className="note-actions">
+                  <div className="edit-delete-container">
+                    <button className="btn-edit" onClick={() => {
+                      setEditingNote(note.noteId);
+                      setEditingSummary(note.summary);
+                      setEditingDetails(note.details);
+                    }}>Edit</button>
+                    <button className="btn-delete" onClick={() => deleteNote(note.noteId)}>Delete</button>
+                  </div>
+                </div>
               </>
             )}
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

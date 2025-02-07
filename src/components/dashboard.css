@@ -1,0 +1,205 @@
+/* Title */
+.title-container {
+    display: flex;
+    justify-content: center;
+    margin: 5rem;
+}
+
+.title-container h1 {
+    font-size: 3.5rem;
+    margin: 0;
+}
+
+/* Input Fields */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem; /* Ensure space for button below */
+    position: relative;
+    
+}
+
+.input-title {
+    font-size: 1.5rem;
+    height: 40px;
+    width: 50%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    text-align: left;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+
+}
+
+.input-details {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    height: 150px;
+    width: 50%;
+    text-align: left;
+    vertical-align: top;
+    overflow-y: auto;
+    resize: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+
+}
+
+/* Add button positioned just outside bottom-left */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: 10px; /* Spacing from textarea */
+}
+
+.button-container button {
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    background-color: teal;
+    color: white;
+    cursor: pointer;
+    border: none;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+ 
+}
+
+.button-container button:hover {
+    background-color: #0056b3;
+}
+
+.btn-fetch {
+    font-size: 1.5rem;
+    background-color: teal;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 250px;
+    margin-left: 10px;
+}
+
+/* Notes Container */
+.notes-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+/* Note Card */
+.note-card {
+    width: 50%;
+    padding: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    height: 25%;
+    margin-bottom: 25px;
+}
+
+/* Add a border between notes */
+.note-card:not(:last-child) {
+    border-bottom: 4px solid #ccc;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+}
+
+/* Title and Details */
+.note-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.note-details {
+    font-size: 1.2rem;
+    text-align: left;
+}
+
+/* Edit & Delete Button */
+.edit-delete-container {
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.edit-title {
+    font-size: 1.5rem;
+    height: 40px;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    text-align: left;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.edit-details
+{
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    height: 150px;
+    text-align: left;
+    vertical-align: top;
+    overflow-y: auto;
+    resize: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-edit, .btn-delete {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+
+}
+
+.btn-edit {
+    background-color: teal;
+    color: white;
+}
+
+.btn-delete {
+    background-color: teal;
+    color: white
+}
+
+.btn-save
+{
+    background-color: teal;
+    color: white;
+    width: 10%;
+    height: 35px;
+    margin-top: 10px;
+    border: solid 1px white;
+}
+
+.btn-cancel
+{
+    background-color: teal;
+    color: white;
+    width: 10%;
+    height: 35px;
+    margin-top: 10px;
+    border: solid 1px white;
+}
